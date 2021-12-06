@@ -22,7 +22,7 @@ def main():
             instructions[id] = [item[0],int(item[1])]
 
     pos = locate(instructions)
-    print(pos, pos[0] * pos[1])
+    print(pos[0] * pos[1])
 
 if __name__=="__main__":
     main()
