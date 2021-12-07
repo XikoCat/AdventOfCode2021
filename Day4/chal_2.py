@@ -1,17 +1,5 @@
-input = "input2.txt"
+input = "input.txt"
 
-
-def printCard(card):
-    for line in card:
-        print(line)
-
-
-def playUntilWinner(card, calls):
-    for call in calls:
-        print(call)
-        printCard(card)
-        if playCard(card, call):
-            return card, call
 
 def cardSum(card):
     result = 0
@@ -26,8 +14,10 @@ def cardWins(card):
     for i in range(len(card)):
         count_x = count_y = 0
         for j in range(len(card[i])):
-            if str(card[i][j]).find('x') == 0: count_y += 1
-            if str(card[j][i]).find('x') == 0: count_x += 1
+            if str(card[i][j]).find('x') == 0:
+                count_y += 1
+            if str(card[j][i]).find('x') == 0:
+                count_x += 1
             if count_x == 5 or count_y == 5:
                 return True
     return False
@@ -40,18 +30,22 @@ def playCard(card, call):
                 card[i][j] = 'x'
                 return cardWins(card)
     return False
-    
+
 
 def getLastBingoWinner(calls, cards):
     for call in calls:
-        for card in cards:
-            if playCard(card, call):
+        i = 0
+        while i < len(cards):
+            if playCard(cards[i], call):
                 print(len(cards), call)
-                printCard(card)
+                printCard(cards[i])
                 if len(cards) > 1:
-                    cards.remove(card)
+                    cards.pop(i)
+                    i -= 1
                 else:
-                    return card, call
+                    return cards[i], call
+            i += 1
+
 
 def main():
     with open(input) as f:
@@ -70,9 +64,9 @@ def main():
             card.append([int(j) for j in line])
     cards.append(card)
 
-    #winner, call = getLastBingoWinner(calls, cards)
-    winner, call = playUntilWinner(cards[1], calls)
+    winner, call = getLastBingoWinner(calls, cards)
     print(cardSum(winner) * call)
+
 
 if __name__ == "__main__":
     main()
