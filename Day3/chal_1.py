@@ -1,14 +1,16 @@
+# https://adventofcode.com/2021/day/3
+
 input = "input.txt"
 
 
 def getMostCommonOnColumn(lst, pos):
     count_0 = count_1 = 0
     for i in lst:
-        if str(i)[pos] == '0':
+        if str(i)[pos] == "0":
             count_0 += 1
-        if str(i)[pos] == '1':
+        if str(i)[pos] == "1":
             count_1 += 1
-    return '0' if count_0 > count_1 else '1'
+    return "0" if count_0 > count_1 else "1"
 
 
 def getGamma(lst):
@@ -22,10 +24,10 @@ def getEpsilon(lst):
     gamma = getGamma(lst)
     epsilon = ""
     for c in gamma:
-        if c == '0':
-            epsilon += '1'
-        if c == '1':
-            epsilon += '0'
+        if c == "0":
+            epsilon += "1"
+        if c == "1":
+            epsilon += "0"
     return epsilon
 
 

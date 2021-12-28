@@ -1,10 +1,14 @@
+# https://adventofcode.com/2021/day/1
+
 input = "input.txt"
+
 
 def sumAdjacent(list, start, sumCount):
     value = 0
-    for i in range(start, start+sumCount):
+    for i in range(start, start + sumCount):
         value += list[i]
     return value
+
 
 def countIncreaseWithSum(list, sumCount):
     count = 0
@@ -16,11 +20,13 @@ def countIncreaseWithSum(list, sumCount):
         last = current
     return count
 
+
 def main():
     with open(input) as f:
         content = [int(i) for i in f.readlines()]
-    
+
     print(countIncreaseWithSum(content, 3))
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
